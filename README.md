@@ -1,5 +1,7 @@
 # PokerHelper
 
+[![Domain CI](https://github.com/jkoeb8762/PokerHelper/actions/workflows/domain-ci.yml/badge.svg)](https://github.com/jkoeb8762/PokerHelper/actions/workflows/domain-ci.yml)
+
 PokerHelper is a local, offline poker study application being built from a
 deterministic poker-domain foundation. The first product milestone is a
 six-max, 100 BB, preflop cash-game Trainer.
@@ -9,9 +11,10 @@ observe live tables, or provide real-time assistance.
 
 ## Current milestone
 
-Phase 1 implements cards, exact hand evaluation, six-max preflop betting,
+Phase 1 is complete. It implements cards, exact hand evaluation, six-max preflop betting,
 versioned rake, exact-combo ranges, canonical serialization, and stable content
-identities. It has no network, database, or third-party runtime dependency.
+identities. It has no network, database, or third-party runtime dependency. The
+project is paused for product testing and code review before Phase 2 begins.
 
 ## Run the deterministic suite
 

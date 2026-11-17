@@ -1,7 +1,8 @@
 # Phase 1 Verification Evidence
 
 **Date:** 2026-11-17  
-**Environment verified:** Windows, Python 3.12.3  
+**Environments verified:** Local Windows/Python 3.12.3 plus hosted Windows and
+Ubuntu on Python 3.12 and 3.14
 **Corpus:** `EVAL_REFERENCE_V1` plus named `CARD`, `BET`, `POS`, `RAKE`,
 `RANGE`, `ID`, `ERR`, and `PROP` tests
 
@@ -13,7 +14,7 @@ The deterministic Phase 1 command completed successfully:
 .\scripts\test.ps1
 ```
 
-Result: **55 tests passed in 1.078 seconds**. A subsequent bytecode compilation
+Result: **55 tests passed in 1.090 seconds**. A subsequent bytecode compilation
 check also completed without error:
 
 ```powershell
@@ -36,7 +37,7 @@ dependency. The one randomized property sample uses the fixed seed `1701`.
 | P1.7 weighted ranges/removal | `ranges.py` | `RANGE-003`–`RANGE-009` |
 | P1.8 serialization/IDs | `canonical.py` | `ID-001`–`ID-007` and replay identity property |
 | P1.9 explicit rejection | `errors.py` and constructors/replay | `ERR-001`–`ERR-005` plus named invalid cases |
-| P1.10 CI | `.github/workflows/domain-ci.yml` | Same command configured for Windows/Linux and Python 3.12/3.14; hosted run pending repository connection |
+| P1.10 CI | `.github/workflows/domain-ci.yml` | [Domain CI run 44133021945](https://github.com/jkoeb8762/PokerHelper/actions/runs/44133021945): all four matrix jobs passed |
 
 The legal-action frontier property explored more than 500 distinct prefixes to
 depth six. Every generated legal action was accepted, each resulting state
@@ -63,12 +64,20 @@ manually specified independently of PokerHelper's evaluator. P0.8 also requires
 a large differential comparison with a separately maintained evaluator before
 Phase 2 publication; that later release gate is intentionally not claimed here.
 
-The GitHub Actions workflow is present and uses the identical deterministic
-command, but this repository currently has no GitHub remote and this machine has
-neither a GitHub Actions runner, Docker, nor `act`. Therefore the hosted
-Windows/Linux × Python 3.12/3.14 matrix has not executed yet. P1.10 remains open
-until the first connected run is green; no poker-domain defect is presently
-known.
+## Hosted CI evidence
+
+GitHub Actions [Domain CI run 44133021945](https://github.com/jkoeb8762/PokerHelper/actions/runs/44133021945)
+completed successfully against commit `6aa228426f4fc086ac11ca64e88b55c5b62713b1`.
+It invoked the same deterministic command and passed all four jobs:
+
+- Ubuntu / Python 3.12;
+- Ubuntu / Python 3.14;
+- Windows / Python 3.12;
+- Windows / Python 3.14.
+
+The run started at `2026-11-17T17:05:05Z` and completed at
+`2026-11-17T17:05:27Z`. No artifacts or caches were produced. This satisfies
+P1.10 and the Phase 1 executable verification gate.
 
 ## Review entry points
 

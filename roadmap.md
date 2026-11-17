@@ -2,8 +2,8 @@
 
 **Document status:** Active  
 **Last updated:** 2026-11-17  
-**Current stage:** Stage 1 — Product and Technical Foundation  
-**Current phase:** Phase 1 — Poker Rules and Range Engine
+**Current stage:** Stage 1 — Product and Technical Foundation (review hold)
+**Current phase:** Phase 1 complete — product test and code review before Phase 2
 
 ## Purpose
 
@@ -52,7 +52,7 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 | Stage | Phase | Primary outcome | Status | Depends on |
 |---|---|---|---|---|
 | 1. Foundation | 0. Product definition and architecture | Scope, contracts, UX, and technical direction are explicit | Complete | — |
-| 1. Foundation | 1. Poker rules and range engine | A tested, deterministic poker domain core | In progress | Phase 0 |
+| 1. Foundation | 1. Poker rules and range engine | A tested, deterministic poker domain core | Complete | Phase 0 |
 | 2. Preflop MVP | 2. Solution pipeline and study browser | Users can inspect validated preflop solutions | Not started | Phase 1 |
 | 2. Preflop MVP | 3. Preflop trainer | Users can drill decisions and track EV-based results | Not started | Phase 2 |
 | 3. Postflop and Analysis | 4. Restricted postflop study | Users can explore a deliberately limited postflop library | Not started | Phase 3 |
@@ -123,7 +123,7 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 - [x] P1.7 Weighted-range operations preserve normalized weights and apply card removal correctly. ([Evidence](docs/evidence/phase-1-verification.md))
 - [x] P1.8 Equivalent states serialize identically and receive stable identifiers. ([Evidence](docs/evidence/phase-1-verification.md))
 - [x] P1.9 Invalid or unsupported states fail explicitly rather than being silently corrected. ([Evidence](docs/evidence/phase-1-verification.md))
-- [!] P1.10 Continuous integration runs the complete deterministic test suite successfully. ([Workflow](.github/workflows/domain-ci.yml); [local evidence](docs/evidence/phase-1-verification.md)) **Blocker:** the repository has no GitHub remote/runner, so the configured Windows/Linux × Python 3.12/3.14 hosted matrix cannot be observed until the project is connected.
+- [x] P1.10 Continuous integration runs the complete deterministic test suite successfully. ([Workflow](.github/workflows/domain-ci.yml); [verification evidence](docs/evidence/phase-1-verification.md); [hosted run](https://github.com/jkoeb8762/PokerHelper/actions/runs/44133021945))
 
 **Exit gate:** The engine can replay every supported six-max 100 BB preflop sequence, report legal actions and exact pot/stacks, and reproduce the same canonical state every time with all tests passing.
 
@@ -456,6 +456,7 @@ These capabilities require their own future scope and checkpoints:
 | 2026-11-17 | Treat the no-real-time-assistance, authorized-data, and local-privacy boundaries as enforceable product requirements. |
 | 2026-11-17 | Adopt the project-owned `MVP_CASH_5PCT_1BB_NFND_V1` rake preset: 5%, 1 BB cap, no-flop-no-drop, centi-BB rounding down. |
 | 2026-11-17 | Keep the Phase 1 poker domain standard-library-only and Python 3.12-compatible while retaining Python 3.14 as the primary release toolchain. |
+| 2026-11-17 | Keep the source repository public to use public-repository GitHub Actions; local study data, imported hands, solution artifacts, logs, credentials, and secrets remain excluded from source control. |
 
 ## Change log
 
@@ -469,3 +470,4 @@ These capabilities require their own future scope and checkpoints:
 | 2026-08-17 | Approved the canonical contract specification and completed P0.5. |
 | 2026-11-17 | Approved the technology design, low-fidelity MVP screens, accuracy contract, Phase 1 backlog, and guardrail requirements; completed Phase 0 and opened Phase 1. |
 | 2026-11-17 | Implemented and locally verified P1.1–P1.9 with 55 deterministic tests; configured the P1.10 CI matrix, pending its first connected hosted run. |
+| 2026-11-17 | Passed the P1.10 GitHub Actions matrix on Windows and Ubuntu with Python 3.12 and 3.14; completed Phase 1 and paused for product testing and code review. |

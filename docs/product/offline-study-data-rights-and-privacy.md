@@ -92,6 +92,17 @@ Logs minimize sensitive detail. Routine logs do not include full session
 decision history or imported raw hands. A user-initiated diagnostic export must
 preview included files and allow study data to be excluded.
 
+### Public source repository boundary
+
+The PokerHelper source repository is public so its deterministic test matrix can
+run on public-repository GitHub Actions. Public source control contains only
+code, documentation, tests, and deliberately non-sensitive fixtures. Local
+study history, imported hand histories, solution artifacts, logs, database
+files, credentials, tokens, environment files, and diagnostic exports must not
+be committed. The project-level ignore rules exclude the standard local data,
+log, environment, and credential paths; contributors must still inspect every
+change before publishing it.
+
 ### Retention and control
 
 - Sessions persist until the user deletes them.

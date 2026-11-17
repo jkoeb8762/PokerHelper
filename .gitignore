@@ -18,6 +18,15 @@ frontend/dist/
 data/
 logs/
 
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
 # Editors and operating systems
 .idea/
 .vscode/
