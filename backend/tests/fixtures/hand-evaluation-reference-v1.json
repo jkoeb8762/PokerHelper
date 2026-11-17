@@ -1,0 +1,27 @@
+{
+  "corpusVersion": "EVAL_REFERENCE_V1",
+  "source": "PokerStars Learn hand-ranking rules; expected tuples independently encoded",
+  "cases": [
+    {"id": "EVAL-001", "cards": ["As", "Ks", "Qs", "Js", "Ts"], "category": "STRAIGHT_FLUSH", "tiebreak": [14]},
+    {"id": "EVAL-002", "cards": ["5s", "4s", "3s", "2s", "As"], "category": "STRAIGHT_FLUSH", "tiebreak": [5]},
+    {"id": "EVAL-003", "cards": ["Ac", "Ad", "Ah", "As", "Kd"], "category": "FOUR_OF_A_KIND", "tiebreak": [14, 13]},
+    {"id": "EVAL-004", "cards": ["Kh", "Kd", "Kc", "2s", "2d"], "category": "FULL_HOUSE", "tiebreak": [13, 2]},
+    {"id": "EVAL-005", "cards": ["Ah", "Jh", "9h", "4h", "2h"], "category": "FLUSH", "tiebreak": [14, 11, 9, 4, 2]},
+    {"id": "EVAL-006", "cards": ["As", "Kd", "Qh", "Jc", "Ts"], "category": "STRAIGHT", "tiebreak": [14]},
+    {"id": "EVAL-007", "cards": ["As", "2d", "3h", "4c", "5s"], "category": "STRAIGHT", "tiebreak": [5]},
+    {"id": "EVAL-008", "cards": ["Qc", "Qd", "Qh", "As", "9d"], "category": "THREE_OF_A_KIND", "tiebreak": [12, 14, 9]},
+    {"id": "EVAL-009", "cards": ["As", "Ad", "Kc", "Kd", "Qh"], "category": "TWO_PAIR", "tiebreak": [14, 13, 12]},
+    {"id": "EVAL-010", "cards": ["Js", "Jd", "Ac", "9h", "4s"], "category": "ONE_PAIR", "tiebreak": [11, 14, 9, 4]},
+    {"id": "EVAL-011", "cards": ["As", "Kd", "9h", "6c", "3s"], "category": "HIGH_CARD", "tiebreak": [14, 13, 9, 6, 3]},
+    {"id": "EVAL-012", "cards": ["Ah", "Ad", "Ac", "Kh", "Kd", "Kc", "2s"], "category": "FULL_HOUSE", "tiebreak": [14, 13]},
+    {"id": "EVAL-013", "cards": ["As", "Ah", "Ks", "Kh", "Qs", "Qh", "2c"], "category": "TWO_PAIR", "tiebreak": [14, 13, 12]},
+    {"id": "EVAL-014", "cards": ["9s", "8s", "7s", "6s", "5s", "Ah", "Ad"], "category": "STRAIGHT_FLUSH", "tiebreak": [9]},
+    {"id": "EVAL-015", "cards": ["As", "Kd", "Qh", "Jc", "Ts", "9s", "2d"], "category": "STRAIGHT", "tiebreak": [14]},
+    {"id": "EVAL-016", "cards": ["2s", "2h", "2d", "2c", "As", "Ah", "Kd"], "category": "FOUR_OF_A_KIND", "tiebreak": [2, 14]},
+    {"id": "EVAL-017", "cards": ["Ac", "Tc", "8c", "6c", "3c", "Kd", "Qh"], "category": "FLUSH", "tiebreak": [14, 10, 8, 6, 3]},
+    {"id": "EVAL-018", "cards": ["7s", "7h", "7d", "As", "Kd", "Qc", "2h"], "category": "THREE_OF_A_KIND", "tiebreak": [7, 14, 13]},
+    {"id": "EVAL-019", "cards": ["As", "Ah", "Kd", "Qc", "Js", "9h", "2d"], "category": "ONE_PAIR", "tiebreak": [14, 13, 12, 11]},
+    {"id": "EVAL-020", "cards": ["As", "Kd", "Qh", "9c", "7s", "4h", "2d"], "category": "HIGH_CARD", "tiebreak": [14, 13, 12, 9, 7]}
+  ]
+}
+
