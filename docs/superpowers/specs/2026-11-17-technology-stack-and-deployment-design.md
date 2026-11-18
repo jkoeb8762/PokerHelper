@@ -150,6 +150,20 @@ node loading, content-hash verification, atomic publication after validation,
 and immutable reads. The Phase 2 artifact specification will choose concrete
 encoding and compression; the interface does not assume one monolithic file.
 
+**Phase 2 implementation note (2026-11-18):** the immutable artifact directory
+is authoritative and a deterministic `index.json` is rebuildable from its
+manifests. SQLAlchemy, Alembic, and `pokerhelper.db` are intentionally introduced
+with Phase 3's first mutable session records instead of creating an otherwise
+empty database during the read-only Study slice. This changes introduction
+order, not the approved persistence boundary. Phase 3 must migrate scenario
+catalog metadata into SQLite before adding training writes.
+
+Validated solution-node GET responses also use direct deterministic JSON
+serialization after import-time schema validation. This avoids a costly second
+recursive conversion over 1,326 combos and meets the 200 ms p95 contract.
+Pydantic remains required for request/write boundaries and smaller structured
+responses as those boundaries arrive.
+
 ### Local data safety
 
 `data/` is not committed. A future backup/export command must copy the SQLite

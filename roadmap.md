@@ -1,9 +1,9 @@
 # PokerHelper Product Roadmap
 
 **Document status:** Active  
-**Last updated:** 2026-11-17  
-**Current stage:** Stage 1 — Product and Technical Foundation (review hold)
-**Current phase:** Phase 1 complete — product test and code review before Phase 2
+**Last updated:** 2026-11-18
+**Current stage:** Stage 2 — Six-Max 100 BB Preflop MVP (review hold)
+**Current phase:** Phase 2 complete — product test and code review before Phase 3
 
 ## Purpose
 
@@ -53,7 +53,7 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 |---|---|---|---|---|
 | 1. Foundation | 0. Product definition and architecture | Scope, contracts, UX, and technical direction are explicit | Complete | — |
 | 1. Foundation | 1. Poker rules and range engine | A tested, deterministic poker domain core | Complete | Phase 0 |
-| 2. Preflop MVP | 2. Solution pipeline and study browser | Users can inspect validated preflop solutions | Not started | Phase 1 |
+| 2. Preflop MVP | 2. Solution pipeline and study browser | Users can inspect validated preflop solutions | Complete | Phase 1 |
 | 2. Preflop MVP | 3. Preflop trainer | Users can drill decisions and track EV-based results | Not started | Phase 2 |
 | 3. Postflop and Analysis | 4. Restricted postflop study | Users can explore a deliberately limited postflop library | Not started | Phase 3 |
 | 3. Postflop and Analysis | 5. Hand-history analyzer | Users can turn their own played hands into leak reports and drills | Not started | Phase 4 |
@@ -149,16 +149,16 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 
 **Checkpoints**
 
-- [ ] P2.1 Select and document the authorized source and generation method for MVP solutions.
-- [ ] P2.2 Define artifact metadata, including configuration, tree, solver, accuracy, source, and version.
-- [ ] P2.3 Reject malformed solutions, impossible combos, invalid actions, and non-normalized frequencies.
-- [ ] P2.4 Importing the same artifact is deterministic and does not create conflicting versions.
-- [ ] P2.5 Users can navigate all supported opening, calling, and raising branches.
-- [ ] P2.6 The range matrix displays fold, call, and raise mixes accurately for every supported hand.
-- [ ] P2.7 A selected combo exposes action frequencies and EVs without losing suit-specific information.
-- [ ] P2.8 The interface always exposes stack, positions, blinds, rake, action history, and solution version.
-- [ ] P2.9 Representative nodes match the source solution within the documented numeric tolerance.
-- [ ] P2.10 Common study nodes load within the agreed performance budget.
+- [x] P2.1 Select and document the authorized source and generation method for MVP solutions. ([Evidence](docs/evidence/phase-2-verification.md))
+- [x] P2.2 Define artifact metadata, including configuration, tree, solver, accuracy, source, and version. ([Evidence](docs/evidence/phase-2-verification.md))
+- [x] P2.3 Reject malformed solutions, impossible combos, invalid actions, and non-normalized frequencies. ([Evidence](docs/evidence/phase-2-verification.md))
+- [x] P2.4 Importing the same artifact is deterministic and does not create conflicting versions. ([Evidence](docs/evidence/phase-2-verification.md))
+- [x] P2.5 Users can navigate all supported opening, calling, and raising branches. ([Evidence](docs/evidence/phase-2-verification.md))
+- [x] P2.6 The range matrix displays fold, call, and raise mixes accurately for every supported hand. ([Evidence](docs/evidence/phase-2-verification.md))
+- [x] P2.7 A selected combo exposes action frequencies and EVs without losing suit-specific information. ([Evidence](docs/evidence/phase-2-verification.md))
+- [x] P2.8 The interface always exposes stack, positions, blinds, rake, action history, and solution version. ([Evidence](docs/evidence/phase-2-verification.md))
+- [x] P2.9 Representative nodes match the source solution within the documented numeric tolerance. ([Evidence](docs/evidence/phase-2-verification.md))
+- [x] P2.10 Common study nodes load within the agreed performance budget. ([Evidence](docs/evidence/phase-2-verification.md))
 
 **Exit gate:** A user can select and navigate any scenario in the agreed preflop tree, inspect its complete strategy, and reproduce the displayed values from a validated, immutable source artifact.
 

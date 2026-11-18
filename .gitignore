@@ -9,10 +9,12 @@ htmlcov/
 .venv/
 backend/*.egg-info/
 backend/src/*.egg-info/
+.cache/
 
 # JavaScript
 node_modules/
 frontend/dist/
+*.tsbuildinfo
 
 # Local application data and logs
 data/

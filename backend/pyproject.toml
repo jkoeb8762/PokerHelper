@@ -4,11 +4,31 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pokerhelper"
-version = "0.1.0"
-description = "Deterministic poker study domain core"
+version = "0.2.0"
+description = "Local-first poker study application"
+readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "anyio==4.9.0",
+    "fastapi==0.115.12",
+    "pydantic==2.11.4",
+    "uvicorn[standard]==0.34.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx==0.28.1",
+]
+
+[project.scripts]
+pokerhelper = "pokerhelper.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+pokerhelper = [
+    "resources/solutions/*/manifest.json",
+    "resources/solutions/*/nodes/*.json",
+]
 

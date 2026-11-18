@@ -1,0 +1,192 @@
+{
+  "accuracy": {
+    "evAbsToleranceBb": "0.000001",
+    "exploitabilityBbPerHand": "0.000802724936",
+    "extractionMaxEvErrorBb": "0.000000000001",
+    "extractionMaxFrequencyError": "0.000000000006",
+    "frequencyAbsTolerance": "0.000000001",
+    "modelAccuracyBoundBb": null
+  },
+  "authorization": {
+    "basis": "OPEN_SOURCE",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/chirenonhive/poker-solver/blob/6d54d3725c50d5e74c8971723a616eb52d664f3c/LICENSE",
+    "redistributionPermitted": true
+  },
+  "game": {
+    "anteBb": "0",
+    "bigBlindBb": "1",
+    "effectiveStackBb": "100",
+    "format": "CASH",
+    "positions": [
+      "SB",
+      "BB"
+    ],
+    "rake": {
+      "capBb": "0",
+      "noFlopNoDrop": true,
+      "policyVersion": "NO_RAKE_SOURCE_V1",
+      "rate": "0"
+    },
+    "smallBlindBb": "0.5",
+    "tableSize": 6,
+    "variant": "NLHE"
+  },
+  "generatedAt": "2026-11-18T00:00:00-08:00",
+  "identityProfileVersion": "1",
+  "limitations": [
+    "Heads-up SB-versus-BB decision tree after UTG, HJ, CO, and BTN fold; it is not a complete six-max solution.",
+    "Flop-going leaves use a positional realized-equity heuristic rather than a solved postflop game.",
+    "The source model is rake-free and does not implement the PokerHelper MVP cash-game rake preset.",
+    "Monte Carlo equity sampling and finite CFR+ iterations add approximation error; no absolute game-accuracy bound is available.",
+    "Study-only reference pack: it must not be used for Trainer EV-loss grading."
+  ],
+  "nodes": [
+    {
+      "nodeId": "node-000",
+      "path": "nodes/node-000.json",
+      "sha256": "4123a6f13b4b394b179ce403aaad3d11523a6e65ea889e530f6b9c4d8a87d856"
+    },
+    {
+      "nodeId": "node-002",
+      "path": "nodes/node-002.json",
+      "sha256": "c2e4d9d622a0d17f14f8c5777b3dd06c6ff7675677ff2b744f33f558c068b85a"
+    },
+    {
+      "nodeId": "node-004",
+      "path": "nodes/node-004.json",
+      "sha256": "4a61f0fb26f457266a7a037d35eefa88aaf013cf0390a237ddaa87bd9b7d8d01"
+    },
+    {
+      "nodeId": "node-007",
+      "path": "nodes/node-007.json",
+      "sha256": "e4d5181b4140bf44785c01cf0661ed1fd40382e425e41cc03026db2cd8d95bcb"
+    },
+    {
+      "nodeId": "node-010",
+      "path": "nodes/node-010.json",
+      "sha256": "c0add1dba7b9a67497bc33a1f0234b7722c1171dc2c9ba07290413c4a807e7ff"
+    },
+    {
+      "nodeId": "node-013",
+      "path": "nodes/node-013.json",
+      "sha256": "a5e548956365d47bcaa9e21993632b0e2707479c1b22a419ca9ae4f44bbe2757"
+    },
+    {
+      "nodeId": "node-016",
+      "path": "nodes/node-016.json",
+      "sha256": "ee163711707ac79e293528907159538223eb3e9e6c1cb492a75e47c50becf6c3"
+    },
+    {
+      "nodeId": "node-019",
+      "path": "nodes/node-019.json",
+      "sha256": "d707302c874d84aa2e3d6a6b32652ec4da3df4b22d23bfc8367bcc6f9991bf72"
+    },
+    {
+      "nodeId": "node-022",
+      "path": "nodes/node-022.json",
+      "sha256": "d5097026973843a0167898dec1dfa499441b634ffd0f2b7f2f0cdd15eb3c6732"
+    },
+    {
+      "nodeId": "node-025",
+      "path": "nodes/node-025.json",
+      "sha256": "364998a534f113bcc84fbae6a6433ef6d8e8fd0ea41f43adfae6e3b273a13e47"
+    },
+    {
+      "nodeId": "node-028",
+      "path": "nodes/node-028.json",
+      "sha256": "1493f375feee33fb7d91aef07cea829e6d12da5c3dff8e053f0b91d361dbae49"
+    },
+    {
+      "nodeId": "node-031",
+      "path": "nodes/node-031.json",
+      "sha256": "77bc6e053cedd3b6272b05beb32c8cba4c6c0577a7b236b22fb0dc3f8f6b7949"
+    },
+    {
+      "nodeId": "node-034",
+      "path": "nodes/node-034.json",
+      "sha256": "e7eff412d86fd5a83826e0e5246139cc9de337c4e2d0c6545a14ec9279e4c5cf"
+    },
+    {
+      "nodeId": "node-037",
+      "path": "nodes/node-037.json",
+      "sha256": "6e77d1bd774f6f9dc28344c64992089e9e0d5f5cf2815c9fa0ede84128c543c5"
+    },
+    {
+      "nodeId": "node-040",
+      "path": "nodes/node-040.json",
+      "sha256": "6f61739698bc8a603be7ac417216d226208f298bd9fbfabd12a681160a51c6fc"
+    },
+    {
+      "nodeId": "node-043",
+      "path": "nodes/node-043.json",
+      "sha256": "fe5cf69c8420678344ee56b2cc3dd1a995e12c0ddd56ea81d04846b4c923d556"
+    },
+    {
+      "nodeId": "node-046",
+      "path": "nodes/node-046.json",
+      "sha256": "5399366e07cc97d97fc13e7cfd125f4f742bbe0fb58ab5ec4728aed6fdbccc8a"
+    },
+    {
+      "nodeId": "node-049",
+      "path": "nodes/node-049.json",
+      "sha256": "9b5168ed5f8934f1114bdad281f9158ac9b5bb1e356c5ca69397fcc628888f3d"
+    }
+  ],
+  "scenario": {
+    "assumedPriorActions": [
+      {
+        "actor": "UTG",
+        "type": "FOLD"
+      },
+      {
+        "actor": "HJ",
+        "type": "FOLD"
+      },
+      {
+        "actor": "CO",
+        "type": "FOLD"
+      },
+      {
+        "actor": "BTN",
+        "type": "FOLD"
+      }
+    ],
+    "description": "UTG, HJ, CO, and BTN fold; study every supported SB and BB preflop branch.",
+    "rootNodeId": "node-000",
+    "scenarioId": "sb-vs-bb-100bb-after-folds",
+    "title": "SB vs BB after folds"
+  },
+  "schemaVersion": "1.0.0",
+  "solutionId": "solution:sha256:1e5323bfe3efdf244a424c2b1f17579c2c2f1d547cee7b77dd956bf0f4f4ead9",
+  "solver": {
+    "algorithm": "CFR+ with linear averaging",
+    "equitySamplesPerCanonicalMatchup": 8000,
+    "equitySeed": 1,
+    "evBaseline": "Decision-point net EV in BB; chips committed before the decision are excluded",
+    "iterations": 800,
+    "realizeIp": "1",
+    "realizeOop": "0.85"
+  },
+  "source": {
+    "commit": "6d54d3725c50d5e74c8971723a616eb52d664f3c",
+    "generationMethod": "Locally generated with exact-combo CFR+ and deterministic Monte Carlo equity seed",
+    "name": "poker-solver",
+    "owner": "poker-solver contributors",
+    "repository": "https://github.com/chirenonhive/poker-solver"
+  },
+  "title": "SB vs BB 100 BB reference strategy",
+  "trainerEligible": false,
+  "tree": {
+    "allowLimp": true,
+    "includeAllIn": true,
+    "maxRaises": 4,
+    "openRaiseToBb": [
+      "2.5"
+    ],
+    "reraisePotFractions": [
+      "1"
+    ]
+  },
+  "version": "phase2-hu-sb-bb-100bb-v1"
+}

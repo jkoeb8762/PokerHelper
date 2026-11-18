@@ -95,13 +95,16 @@ preview included files and allow study data to be excluded.
 ### Public source repository boundary
 
 The PokerHelper source repository is public so its deterministic test matrix can
-run on public-repository GitHub Actions. Public source control contains only
-code, documentation, tests, and deliberately non-sensitive fixtures. Local
-study history, imported hand histories, solution artifacts, logs, database
-files, credentials, tokens, environment files, and diagnostic exports must not
-be committed. The project-level ignore rules exclude the standard local data,
-log, environment, and credential paths; contributors must still inspect every
-change before publishing it.
+run on public-repository GitHub Actions. Public source control contains code,
+documentation, tests, deliberately non-sensitive fixtures, and only those seed
+solution artifacts that have received an explicit provenance and redistribution
+review. Each bundled seed must be content-addressed, immutable, reproducible,
+non-user data, and covered by compatible terms recorded in its manifest and the
+third-party notice. Local study history, user-imported solutions, imported hand
+histories, logs, database files, credentials, tokens, environment files, and
+diagnostic exports must not be committed. The project-level ignore rules exclude
+the standard local data, log, environment, cache, and credential paths;
+contributors must still inspect every change before publishing it.
 
 ### Retention and control
 
