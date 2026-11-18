@@ -73,9 +73,11 @@ Local release verification completed with:
 - hard-refresh test for a nested bookmarked Study URL;
 - source snapshot comparisons for root, versus-open, and versus-3-bet nodes.
 
-GitHub Actions repeats the four-platform deterministic domain matrix plus the
-locked Python 3.14 / Node 24 application suite. The hosted run link is added to
-this record after the Phase 2 commit is pushed.
+GitHub Actions repeated the four-platform deterministic domain matrix plus the
+locked Python 3.14 / Node 24 application suite. All five jobs passed in
+[run 44415815675](https://github.com/jkoeb8762/PokerHelper/actions/runs/44415815675)
+at commit `a078d69`; the application job installed from the lockfile, ran the
+artifact and API checks, tested the UI, and built the production bundle.
 
 ## Live-browser acceptance
 
