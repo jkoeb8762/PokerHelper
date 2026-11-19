@@ -1,5 +1,11 @@
 # Phase 2 Verification Evidence
 
+> **Coverage correction — 2026-11-19:** This evidence remains valid for the
+> SB-versus-BB reference fixture and the reusable artifact/Study mechanics. It
+> does not prove the originally approved multi-position six-max coverage. Phase
+> 2 is reopened under
+> [P2.11–P2.18](../../roadmap.md#phase-2--solution-pipeline-and-study-browser).
+
 **Phase:** Solution Pipeline and Study Browser
 **Verified:** 2026-11-18; artifact maintenance revalidated 2026-11-19
 **Result:** Exit gate satisfied for the agreed SB-versus-BB reference tree
@@ -109,12 +115,13 @@ the visible local browser. Verified interactions:
 
 ## Exit-gate interpretation
 
-The exit gate is satisfied for the explicitly agreed Phase 2 tree: any of its
+The vertical-slice gate is satisfied for the implemented Phase 2 reference tree: any of its
 18 SB/BB decision scenarios can be selected or reached through an action,
 inspected at grouped and exact-combo levels, bookmarked, and reproduced from a
 validated immutable artifact.
 
-This is not an accuracy-certified, full six-max Trainer pack. Phase 3 permits
+This is not an accuracy-certified, full six-max Trainer pack and does not close
+the reopened Phase 2 MVP gate. Phase 3 permits
 it only as an explicitly acknowledged `REFERENCE_MODEL` and labels EV loss
 relative to this exact source. Completing a full six-max, raked, certified
 strategy remains a separate source/accuracy milestone and cannot be inferred

@@ -1,5 +1,10 @@
 # Phase 3 Verification Evidence
 
+> **Release correction — 2026-11-19:** This evidence verifies Trainer mechanics
+> against the SB-versus-BB reference fixture. It does not complete the original
+> multi-position six-max MVP. Phase 3's release gate is blocked until reopened
+> Phase 2 supplies and validates the approved strategy coverage.
+
 **Phase:** Preflop Trainer
 
 **Verified:** 2026-11-19
@@ -124,7 +129,7 @@ a user can deliberately practice exact hands, receive reproducible solution-
 relative feedback, review saved results, and drill weaknesses with no unresolved
 critical poker-state or persistence defect.
 
-This completes the first local MVP, not the strategy-data ambition. A full
-six-max opening-position library, the approved cash rake preset, richer sizing,
-and an accuracy-certified solution source remain future solution work and must
-not be inferred from this result.
+This does **not** complete the first local MVP. A full six-max position and
+action-sequence library, the approved cash rake preset, sufficient sizing, and
+an accuracy-qualified solution source are required by reopened Phase 2 before
+the Phase 3 release gate can pass.

@@ -1,6 +1,6 @@
 # Phase 3 Preflop Trainer Design
 
-**Status:** Implemented
+**Status:** Mechanics implemented; MVP release gate blocked by reopened Phase 2 coverage
 
 **Date:** 2026-11-19
 

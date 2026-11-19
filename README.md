@@ -11,17 +11,22 @@ observe live tables, or provide real-time assistance.
 
 ## Current milestone
 
-Phase 3 is complete and ready for product testing. PokerHelper now adds a
-range-weighted preflop Trainer to the validated Study browser: exact suited
+Phase 2 has been reopened because product testing exposed a strategy-coverage
+gap. PokerHelper's Study and Trainer mechanics are implemented: exact suit-specific
 combos, legal action inputs, immediate or delayed feedback, exact-decimal EV
 loss, optional mixed-strategy RNG bands, durable local sessions, replay,
-breakdowns, calibration, and targeted redrills.
+breakdowns, calibration, and targeted redrills. The originally approved
+multi-position six-max solution library is not yet complete, so this is not yet
+the finished preflop MVP.
 
-The bundled pack is deliberately narrow: SB versus BB after four folds at 100
-BB. It exactly reproduces a pinned open-source solver output, but its postflop
-continuation model is approximate and rake-free. Trainer use therefore requires
-an explicit acknowledgement, and every result is labelled as EV relative to
-that exact reference model—not as accuracy-certified real-game GTO advice.
+The currently bundled pack is a development reference fixture: SB versus BB
+after four folds at 100 BB. It exactly reproduces a pinned open-source solver
+output, but its postflop continuation model is approximate and rake-free.
+Trainer use therefore requires an explicit acknowledgement, and every result is
+labelled as EV relative to that exact reference model—not as
+accuracy-certified real-game GTO advice. Reopened Phase 2 is evaluating a
+complete, legally reusable six-player source or a project-owned pipeline built
+from compatible open-source components.
 
 ## Run PokerHelper on Windows
 
@@ -177,6 +182,7 @@ frontend dependencies in `frontend/package-lock.json`.
 - [Technology and deployment design](docs/superpowers/specs/2026-11-17-technology-stack-and-deployment-design.md)
 - [Phase 2 artifact and Study design](docs/superpowers/specs/2026-11-18-solution-artifact-and-study-browser-design.md)
 - [Phase 2 source and scope](docs/product/phase-2-source-and-scope.md)
+- [Phase 2 coverage recovery and solver audit](docs/product/phase-2-coverage-recovery.md)
 - [Phase 3 Trainer design](docs/superpowers/specs/2026-11-19-preflop-trainer-design.md)
 - [Phase 3 verification evidence](docs/evidence/phase-3-verification.md)
 - [Golden-test and accuracy contract](docs/product/golden-test-corpus-and-accuracy.md)

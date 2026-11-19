@@ -1,6 +1,6 @@
 # Phase 2 Solution Artifact and Study Browser Design
 
-**Status:** Implemented
+**Status:** Reference slice implemented; Phase 2 coverage reopened
 **Date:** 2026-11-18
 **Roadmap:** P2.1–P2.10
 
@@ -20,9 +20,9 @@ visibly marked approximate and may not be presented as accuracy-certified
 grading. Phase 3 may use it only in an explicitly acknowledged
 `REFERENCE_MODEL` mode whose EV loss is labelled relative to this exact pack.
 
-## Bounded initial scenario
+## Bounded reference scenario
 
-The first agreed tree represents the final two players at a six-max table after
+The initial implementation tree represents the final two players at a six-max table after
 UTG, HJ, CO, and BTN fold:
 
 - 100 BB effective stacks;
@@ -37,6 +37,11 @@ There are 18 public decision nodes and 34 terminal branches. This includes the
 opening decision, limped pots, calls, checks, 3-bets, 4-bets, later raises, and
 all-ins. It does not represent the other five six-max opening positions or the
 approved MVP rake preset.
+
+This was a valid vertical slice for the artifact and Study architecture, but it
+was not a scope change and does not satisfy the original Phase 2 exit gate. The
+remaining source and coverage work is tracked in the
+[Phase 2 recovery record](../../product/phase-2-coverage-recovery.md).
 
 ## Artifact layout
 

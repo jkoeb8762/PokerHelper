@@ -1,6 +1,6 @@
 # Phase 2 Reference Pack: Source, Scope, and Limitations
 
-**Status:** Approved implementation boundary
+**Status:** Historical reference-fixture boundary; insufficient for the reopened MVP coverage gate
 **Date:** 2026-11-18; reference-practice boundary amended 2026-11-19
 **Roadmap checkpoint:** P2.1
 
@@ -21,6 +21,12 @@ The pinned source is small and early-stage. Its repository maturity is not an
 accuracy guarantee. PokerHelper therefore treats it as an inspectable generator
 for the first Study pipeline, not as an authority equivalent to a mature
 commercial solver.
+
+This source was incorrectly allowed to stand in for the complete Phase 2 MVP
+library. It remains authorized and reproducible for regression testing, but the
+project owner did not approve reducing the original multi-position six-max
+scope to this one blind-versus-blind tree. See the
+[Phase 2 coverage recovery record](phase-2-coverage-recovery.md).
 
 ## Reproducible configuration
 

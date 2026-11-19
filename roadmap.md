@@ -3,9 +3,9 @@
 **Document status:** Active  
 **Last updated:** 2026-11-19
 
-**Current stage:** Stage 2 — Six-Max 100 BB Preflop MVP complete (review hold)
+**Current stage:** Stage 2 — Six-Max 100 BB Preflop MVP reopened (coverage recovery)
 
-**Current phase:** Phase 3 complete — MVP product test and code review before Phase 4
+**Current phase:** Phase 2 reopened — full six-max solution source, coverage, and validation
 
 ## Purpose
 
@@ -55,8 +55,8 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 |---|---|---|---|---|
 | 1. Foundation | 0. Product definition and architecture | Scope, contracts, UX, and technical direction are explicit | Complete | — |
 | 1. Foundation | 1. Poker rules and range engine | A tested, deterministic poker domain core | Complete | Phase 0 |
-| 2. Preflop MVP | 2. Solution pipeline and study browser | Users can inspect validated preflop solutions | Complete | Phase 1 |
-| 2. Preflop MVP | 3. Preflop trainer | Users can drill decisions and track EV-based results | Complete | Phase 2 |
+| 2. Preflop MVP | 2. Solution pipeline and study browser | Users can inspect validated preflop solutions | Reopened — coverage incomplete | Phase 1 |
+| 2. Preflop MVP | 3. Preflop trainer | Users can drill decisions and track EV-based results | Mechanics complete; MVP gate blocked by Phase 2 | Phase 2 |
 | 3. Postflop and Analysis | 4. Restricted postflop study | Users can explore a deliberately limited postflop library | Not started | Phase 3 |
 | 3. Postflop and Analysis | 5. Hand-history analyzer | Users can turn their own played hands into leak reports and drills | Not started | Phase 4 |
 | 4. Tournaments | 6. Tournament chip-EV | Short-stack, ante, push/fold, and reshove study | Not started | Phase 3; portions of Phase 4 |
@@ -137,6 +137,13 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 
 **Objective:** Import, validate, store, and display trustworthy preflop strategies.
 
+**Reopened 2026-11-19:** The pipeline and Study mechanics were verified against
+one SB-versus-BB reference tree, but that tree does not satisfy the approved
+multi-position six-max MVP journey. The reference artifact remains a useful
+test fixture; it is not the completed MVP strategy library. Recovery evidence
+and source-candidate research are tracked in
+[the Phase 2 coverage recovery record](docs/product/phase-2-coverage-recovery.md).
+
 **Deliverables**
 
 - Versioned solution-artifact specification
@@ -151,7 +158,7 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 
 **Checkpoints**
 
-- [x] P2.1 Select and document the authorized source and generation method for MVP solutions. ([Evidence](docs/evidence/phase-2-verification.md))
+- [~] P2.1 Select and document the authorized source and generation method for MVP solutions. The existing source is authorized but covers only the SB-versus-BB reference fixture; the MVP source decision is reopened. ([Historical evidence](docs/evidence/phase-2-verification.md))
 - [x] P2.2 Define artifact metadata, including configuration, tree, solver, accuracy, source, and version. ([Evidence](docs/evidence/phase-2-verification.md))
 - [x] P2.3 Reject malformed solutions, impossible combos, invalid actions, and non-normalized frequencies. ([Evidence](docs/evidence/phase-2-verification.md))
 - [x] P2.4 Importing the same artifact is deterministic and does not create conflicting versions. ([Evidence](docs/evidence/phase-2-verification.md))
@@ -162,11 +169,31 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 - [x] P2.9 Representative nodes match the source solution within the documented numeric tolerance. ([Evidence](docs/evidence/phase-2-verification.md))
 - [x] P2.10 Common study nodes load within the agreed performance budget. ([Evidence](docs/evidence/phase-2-verification.md))
 
+**Reopened coverage checkpoints**
+
+- [ ] P2.11 Approve an explicit six-max coverage matrix spanning the required hero positions, action sequences, sizings, and heads-up formations.
+- [x] P2.12 Audit legally reusable solver and dataset candidates for six-player coverage, rake, action frequencies, per-action EV, convergence evidence, reproducibility, and redistribution rights. No audited candidate qualified as a complete drop-in source. ([Research record](docs/product/phase-2-coverage-recovery.md))
+- [ ] P2.13 Select and pin the complete-data path: adopt a qualifying source, or integrate compatible open-source components into a project-owned solver pipeline.
+- [ ] P2.14 Generate the approved 100 BB, `MVP_CASH_5PCT_1BB_NFND_V1` solution tree with recorded configuration, seeds, resource use, accuracy measurements, and immutable source identity.
+- [ ] P2.15 Export every required decision node with reach weights, normalized action frequencies, action-conditioned EVs, and the confidence or accuracy metadata needed for Trainer feedback.
+- [ ] P2.16 Remove SB/BB-only assumptions from Study and Trainer controls and make every approved position and scenario selectable.
+- [ ] P2.17 Validate representative RFI, versus-open, versus-3-bet, and versus-4-bet nodes across all approved positions against independent checks and the canonical poker engine.
+- [ ] P2.18 Re-run the complete Phase 2 exit gate, browser journey, artifact integrity suite, and performance budgets over the full approved coverage matrix.
+
 **Exit gate:** A user can select and navigate any scenario in the agreed preflop tree, inspect its complete strategy, and reproduce the displayed values from a validated, immutable source artifact.
+
+**Current gate status:** Not met. Only the SB-versus-BB-after-folds reference
+tree is installed; the approved multi-position coverage and rake-aware strategy
+library are still missing.
 
 ### Phase 3 — Preflop Trainer
 
 **Objective:** Complete the first useful product by turning solutions into repeatable practice.
+
+**Dependency correction:** Session, feedback, persistence, replay, and redrill
+mechanics are implemented and retained. Phase 3 cannot pass its MVP release gate
+until reopened Phase 2 supplies the approved scenario coverage and the Trainer
+is reverified against it.
 
 **Deliverables**
 
@@ -195,6 +222,9 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 - [x] P3.10 End-to-end usability tests cover scenario selection through session review. ([Evidence](docs/evidence/phase-3-verification.md))
 
 **Exit gate — MVP release:** A user can choose a supported six-max 100 BB preflop situation, make decisions, receive reproducible EV-based feedback, review the session, and drill identified weaknesses. Poker-domain and solution validation tests pass with no unresolved critical defects.
+
+**Current gate status:** Blocked by P2.11–P2.18. The existing SB-versus-BB
+reference-model walkthrough verifies the mechanics only.
 
 ---
 
@@ -387,14 +417,18 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 
 Every user-facing release must satisfy the following:
 
+The completed checks below describe the verified reference vertical slice. The
+MVP release remains blocked until the reopened solution and full-coverage checks
+are complete.
+
 - [x] Domain calculations have unit and golden-test coverage. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
-- [x] Relevant solution values pass source or independent validation. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
-- [x] Strategy frequencies normalize within the documented tolerance. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [~] Relevant solution values pass source or independent validation. The reference fixture passes; the full MVP library is pending P2.17. ([Phase 3 mechanics evidence](docs/evidence/phase-3-verification.md))
+- [~] Strategy frequencies normalize within the documented tolerance. The reference fixture passes; full-coverage validation is pending P2.18. ([Phase 3 mechanics evidence](docs/evidence/phase-3-verification.md))
 - [x] Impossible card combinations and states are rejected. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
-- [x] Game, tree, data-source, solver, and accuracy assumptions are inspectable. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [~] Game, tree, data-source, solver, and accuracy assumptions are inspectable for the reference fixture; the replacement MVP source is pending. ([Phase 3 mechanics evidence](docs/evidence/phase-3-verification.md))
 - [x] Historical results retain enough version data to be reproduced. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
 - [x] Unsupported or approximate results are labeled prominently. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
-- [x] Accessibility, responsive-layout, and primary-flow usability checks pass. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [~] Accessibility, responsive-layout, and primary-flow usability checks pass for the reference fixture; the full scenario selector must be reverified under P2.18. ([Phase 3 mechanics evidence](docs/evidence/phase-3-verification.md))
 - [x] Privacy and data-retention behavior match the approved policy. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
 - [x] No feature reads or responds to a live poker-table state. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
 - [x] Known limitations and newly deferred work are documented. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
@@ -459,8 +493,10 @@ These capabilities require their own future scope and checkpoints:
 | 2026-11-17 | Adopt the project-owned `MVP_CASH_5PCT_1BB_NFND_V1` rake preset: 5%, 1 BB cap, no-flop-no-drop, centi-BB rounding down. |
 | 2026-11-17 | Keep the Phase 1 poker domain standard-library-only and Python 3.12-compatible while retaining Python 3.14 as the primary release toolchain. |
 | 2026-11-17 | Keep the source repository public to use public-repository GitHub Actions; local study data, imported hands, solution artifacts, logs, credentials, and secrets remain excluded from source control. |
-| 2026-11-19 | Complete the local MVP with explicit `REFERENCE_MODEL` practice for the bundled approximate pack; preserve exact values, require acknowledgement, and reserve accuracy-certified language for a future qualifying solution. |
+| 2026-11-19 | Complete the Trainer mechanics with explicit `REFERENCE_MODEL` practice for the bundled approximate pack; preserve exact values, require acknowledgement, and reserve accuracy-certified language for a future qualifying solution. This does not complete the agreed MVP coverage. |
 | 2026-11-19 | Treat frequencies below 1% as non-material finite-solve residue for interpretation and require EV equivalence within 0.010 BB before describing an action as supported; retain the raw frequency for auditability. |
+| 2026-11-19 | Correct the mistaken MVP-complete classification: retain the SB-versus-BB pack as a development reference fixture, reopen Phase 2 for the originally approved multi-position six-max coverage, and block the Phase 3 release gate until that dependency passes. |
+| 2026-11-19 | Prefer a complete, auditable open-source solution. If no single source qualifies, permit a project-owned solver pipeline assembled only from compatible licensed components; do not combine unlicensed data or average solver strategies. |
 
 ## Change log
 
@@ -475,6 +511,7 @@ These capabilities require their own future scope and checkpoints:
 | 2026-11-17 | Approved the technology design, low-fidelity MVP screens, accuracy contract, Phase 1 backlog, and guardrail requirements; completed Phase 0 and opened Phase 1. |
 | 2026-11-17 | Implemented and locally verified P1.1–P1.9 with 55 deterministic tests; configured the P1.10 CI matrix, pending its first connected hosted run. |
 | 2026-11-17 | Passed the P1.10 GitHub Actions matrix on Windows and Ubuntu with Python 3.12 and 3.14; completed Phase 1 and paused for product testing and code review. |
-| 2026-11-18 | Implemented and verified the immutable Phase 2 reference artifact, Study API, and responsive range browser; completed P2.1–P2.10. |
+| 2026-11-18 | Implemented and verified the immutable Phase 2 reference artifact, Study API, and responsive range browser; P2.1–P2.10 were marked complete at the time. |
 | 2026-11-19 | Corrected stack-closing call `isAllIn` metadata through canonical replay and deterministically regenerated artifact version `phase2-hu-sb-bb-100bb-v1.1`. |
-| 2026-11-19 | Implemented and verified P3.1–P3.10 with exact-combo training, EV feedback, durable local history, replay, redrills, statistics, responsive browser acceptance, and release documentation; completed the local preflop MVP. |
+| 2026-11-19 | Implemented and verified P3.1–P3.10 mechanics with exact-combo training, EV feedback, durable local history, replay, redrills, statistics, and responsive browser acceptance; the local preflop MVP was incorrectly marked complete. |
+| 2026-11-19 | Reopened Phase 2 after product testing exposed that the sole SB-versus-BB reference artifact did not meet the originally approved six-max scenario coverage; blocked the Phase 3 MVP release gate and began the open-source solver audit. |
