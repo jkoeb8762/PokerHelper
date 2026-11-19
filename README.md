@@ -24,9 +24,10 @@ after four folds at 100 BB. It exactly reproduces a pinned open-source solver
 output, but its postflop continuation model is approximate and rake-free.
 Trainer use therefore requires an explicit acknowledgement, and every result is
 labelled as EV relative to that exact reference model—not as
-accuracy-certified real-game GTO advice. Reopened Phase 2 is evaluating a
-complete, legally reusable six-player source or a project-owned pipeline built
-from compatible open-source components.
+accuracy-certified real-game GTO advice. Reopened Phase 2 will use a
+project-owned pipeline built from compatible open-source components; its exact
+pinned components, continuation-value model, and qualifying solution pack are
+still pending.
 
 ## Run PokerHelper on Windows
 
@@ -183,6 +184,7 @@ frontend dependencies in `frontend/package-lock.json`.
 - [Phase 2 artifact and Study design](docs/superpowers/specs/2026-11-18-solution-artifact-and-study-browser-design.md)
 - [Phase 2 source and scope](docs/product/phase-2-source-and-scope.md)
 - [Phase 2 coverage recovery and solver audit](docs/product/phase-2-coverage-recovery.md)
+- [Phase 2 MVP preflop coverage matrix](docs/product/phase-2-mvp-preflop-coverage-matrix.md)
 - [Phase 3 Trainer design](docs/superpowers/specs/2026-11-19-preflop-trainer-design.md)
 - [Phase 3 verification evidence](docs/evidence/phase-3-verification.md)
 - [Golden-test and accuracy contract](docs/product/golden-test-corpus-and-accuracy.md)

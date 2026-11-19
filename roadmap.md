@@ -171,13 +171,13 @@ and source-candidate research are tracked in
 
 **Reopened coverage checkpoints**
 
-- [ ] P2.11 Approve an explicit six-max coverage matrix spanning the required hero positions, action sequences, sizings, and heads-up formations.
+- [x] P2.11 Approve an explicit six-max coverage matrix spanning the required hero positions, action sequences, sizings, and computational support. The MVP exposes 5 RFI/unopened-pot, 15 versus-open, and 15 original-raiser-versus-3-bet scenario families. ([Coverage matrix](docs/product/phase-2-mvp-preflop-coverage-matrix.md))
 - [x] P2.12 Audit legally reusable solver and dataset candidates for six-player coverage, rake, action frequencies, per-action EV, convergence evidence, reproducibility, and redistribution rights. No audited candidate qualified as a complete drop-in source. ([Research record](docs/product/phase-2-coverage-recovery.md))
-- [ ] P2.13 Select and pin the complete-data path: adopt a qualifying source, or integrate compatible open-source components into a project-owned solver pipeline.
+- [~] P2.13 Select and pin the complete-data path. A project-owned pipeline assembled from compatible licensed components is selected; the exact components, revisions, continuation-value model, and reproducible configuration remain to be pinned.
 - [ ] P2.14 Generate the approved 100 BB, `MVP_CASH_5PCT_1BB_NFND_V1` solution tree with recorded configuration, seeds, resource use, accuracy measurements, and immutable source identity.
 - [ ] P2.15 Export every required decision node with reach weights, normalized action frequencies, action-conditioned EVs, and the confidence or accuracy metadata needed for Trainer feedback.
 - [ ] P2.16 Remove SB/BB-only assumptions from Study and Trainer controls and make every approved position and scenario selectable.
-- [ ] P2.17 Validate representative RFI, versus-open, versus-3-bet, and versus-4-bet nodes across all approved positions against independent checks and the canonical poker engine.
+- [ ] P2.17 Validate representative exposed RFI, versus-open, and versus-3-bet nodes across all approved position pairs, plus downstream 4-bet, 5-bet, squeeze, and multiway support that affects their values, against independent checks and the canonical poker engine.
 - [ ] P2.18 Re-run the complete Phase 2 exit gate, browser journey, artifact integrity suite, and performance budgets over the full approved coverage matrix.
 
 **Exit gate:** A user can select and navigate any scenario in the agreed preflop tree, inspect its complete strategy, and reproduce the displayed values from a validated, immutable source artifact.
@@ -223,7 +223,7 @@ is reverified against it.
 
 **Exit gate — MVP release:** A user can choose a supported six-max 100 BB preflop situation, make decisions, receive reproducible EV-based feedback, review the session, and drill identified weaknesses. Poker-domain and solution validation tests pass with no unresolved critical defects.
 
-**Current gate status:** Blocked by P2.11–P2.18. The existing SB-versus-BB
+**Current gate status:** Blocked by P2.13–P2.18. The existing SB-versus-BB
 reference-model walkthrough verifies the mechanics only.
 
 ---
@@ -497,6 +497,7 @@ These capabilities require their own future scope and checkpoints:
 | 2026-11-19 | Treat frequencies below 1% as non-material finite-solve residue for interpretation and require EV equivalence within 0.010 BB before describing an action as supported; retain the raw frequency for auditability. |
 | 2026-11-19 | Correct the mistaken MVP-complete classification: retain the SB-versus-BB pack as a development reference fixture, reopen Phase 2 for the originally approved multi-position six-max coverage, and block the Phase 3 release gate until that dependency passes. |
 | 2026-11-19 | Prefer a complete, auditable open-source solution. If no single source qualifies, permit a project-owned solver pipeline assembled only from compatible licensed components; do not combine unlicensed data or average solver strategies. |
+| 2026-11-19 | Approve P2.11 with 35 user-facing scenario families: RFI/unopened SB, every legal opener-responder pair, and every original-raiser-versus-3-bettor pair. Defer direct squeeze, overcall, cold-4-bet, versus-4-bet, and multiway drills, but require the solver to retain any such branches that affect exposed EVs. |
 
 ## Change log
 
@@ -515,3 +516,4 @@ These capabilities require their own future scope and checkpoints:
 | 2026-11-19 | Corrected stack-closing call `isAllIn` metadata through canonical replay and deterministically regenerated artifact version `phase2-hu-sb-bb-100bb-v1.1`. |
 | 2026-11-19 | Implemented and verified P3.1–P3.10 mechanics with exact-combo training, EV feedback, durable local history, replay, redrills, statistics, and responsive browser acceptance; the local preflop MVP was incorrectly marked complete. |
 | 2026-11-19 | Reopened Phase 2 after product testing exposed that the sole SB-versus-BB reference artifact did not meet the originally approved six-max scenario coverage; blocked the Phase 3 MVP release gate and began the open-source solver audit. |
+| 2026-11-19 | Approved the P2.11 raked-cash coverage matrix: 35 RFI, versus-open, and original-raiser-versus-3-bet scenario families with a declared single-size action abstraction and broader hidden computational support. |

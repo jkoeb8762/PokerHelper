@@ -25,7 +25,8 @@ reference fixture. It is not the MVP solution library.
 A source is not complete merely because it displays six-max charts. Before it
 can close Phase 2 it must provide or reproducibly generate:
 
-1. every position and action sequence in the approved P2.11 coverage matrix;
+1. every position and action sequence in the approved
+   [P2.11 coverage matrix](phase-2-mvp-preflop-coverage-matrix.md);
 2. the 100 BB six-max game configuration and the project-owned
    `MVP_CASH_5PCT_1BB_NFND_V1` rake policy;
 3. a declared preflop betting tree, including sizes, calls, re-raises, all-ins,
@@ -104,9 +105,9 @@ The proposed project-owned pipeline is component-based:
    comparisons, not blended policies.
 3. **Continuation-value layer:** declared postflop values for every preflop
    terminal. Heads-up continuations may be estimated with a separately pinned
-   open-source postflop solver. Multiway continuations must be solved,
-   explicitly excluded by the approved coverage matrix, or visibly identified
-   as an approximation; they cannot silently become check-down poker.
+   open-source postflop solver. Multiway continuations that can affect an
+   exposed node must be solved or assigned a validated, visibly identified
+   value approximation; they cannot silently become check-down poker.
 4. **Value-export layer:** reach, action frequency, and action-conditioned EV for
    each supported preflop information set, including sampling uncertainty where
    values are estimated.
@@ -126,8 +127,8 @@ record are established.
 
 ## Recovery sequence
 
-1. Approve P2.11's exact scenario matrix and clarify how the MVP treats cold
-   calls, squeezes, and other paths that could reach a multiway flop.
+1. Select and pin the project-owned solver components and their exact source
+   revisions under P2.13.
 2. Extend the feasibility spike to multiple seeds and a meaningful iteration
    budget; measure policy stability, not merely runtime.
 3. Prototype action-conditioned EV export and verify the EV baseline against
@@ -144,6 +145,10 @@ record are established.
   fixture.
 - Phase 2 is reopened; Phase 3 mechanics remain implemented but its MVP release
   gate is blocked.
-- No final solver source has been approved.
+- P2.11 is approved: Study and Trainer expose 35 RFI/unopened-pot,
+  versus-open, and original-raiser-versus-3-bet scenario families. Direct
+  multiway and later-action drills are deferred, but their effect on exposed
+  strategies cannot be deleted from the solve.
 - A project-owned solver assembled from compatible licensed components is the
-  preferred fallback if no qualifying complete open dataset is found.
+  selected path. The exact components, revisions, continuation-value model,
+  and reproducible configuration still require P2.13 approval.
