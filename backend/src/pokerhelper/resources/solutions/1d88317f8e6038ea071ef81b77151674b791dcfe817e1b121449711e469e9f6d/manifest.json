@@ -39,7 +39,7 @@
     "Flop-going leaves use a positional realized-equity heuristic rather than a solved postflop game.",
     "The source model is rake-free and does not implement the PokerHelper MVP cash-game rake preset.",
     "Monte Carlo equity sampling and finite CFR+ iterations add approximation error; no absolute game-accuracy bound is available.",
-    "Study-only reference pack: it must not be used for Trainer EV-loss grading."
+    "Not accuracy-certified for universal real-game GTO grading; Trainer use requires explicit REFERENCE_MODEL acknowledgement and labels EV loss relative to this exact source model."
   ],
   "nodes": [
     {
@@ -75,22 +75,22 @@
     {
       "nodeId": "node-016",
       "path": "nodes/node-016.json",
-      "sha256": "ee163711707ac79e293528907159538223eb3e9e6c1cb492a75e47c50becf6c3"
+      "sha256": "3392415bcb3f49f9bdefe7cd7ce41d47808e7d382ba0caff3211a31bed732471"
     },
     {
       "nodeId": "node-019",
       "path": "nodes/node-019.json",
-      "sha256": "d707302c874d84aa2e3d6a6b32652ec4da3df4b22d23bfc8367bcc6f9991bf72"
+      "sha256": "5b4323296e2be686938cbd3beb2039fc0b63388a26e1bdc67dec5efef03b67c2"
     },
     {
       "nodeId": "node-022",
       "path": "nodes/node-022.json",
-      "sha256": "d5097026973843a0167898dec1dfa499441b634ffd0f2b7f2f0cdd15eb3c6732"
+      "sha256": "1abe52253f2b33e122243a783368c068b239d0a00111393ed72ef10aa065f817"
     },
     {
       "nodeId": "node-025",
       "path": "nodes/node-025.json",
-      "sha256": "364998a534f113bcc84fbae6a6433ef6d8e8fd0ea41f43adfae6e3b273a13e47"
+      "sha256": "9aeb0cc514051ecc361936125aa522ae7a35b964eddf7f59e2b825d22fb3a62f"
     },
     {
       "nodeId": "node-028",
@@ -115,22 +115,22 @@
     {
       "nodeId": "node-040",
       "path": "nodes/node-040.json",
-      "sha256": "6f61739698bc8a603be7ac417216d226208f298bd9fbfabd12a681160a51c6fc"
+      "sha256": "331c052961fdc47bb6ffed069f83b8a7a2c71ee0c693d9df4009391b6bbd91ef"
     },
     {
       "nodeId": "node-043",
       "path": "nodes/node-043.json",
-      "sha256": "fe5cf69c8420678344ee56b2cc3dd1a995e12c0ddd56ea81d04846b4c923d556"
+      "sha256": "5efbe98875154d567e951a7b89ffeaf638d1c1a57a14c214dea0329ec2ef64f9"
     },
     {
       "nodeId": "node-046",
       "path": "nodes/node-046.json",
-      "sha256": "5399366e07cc97d97fc13e7cfd125f4f742bbe0fb58ab5ec4728aed6fdbccc8a"
+      "sha256": "06ae307e55420040742e836aad061bfa0bb7f7ba66a53c7e8a38521ad96c622d"
     },
     {
       "nodeId": "node-049",
       "path": "nodes/node-049.json",
-      "sha256": "9b5168ed5f8934f1114bdad281f9158ac9b5bb1e356c5ca69397fcc628888f3d"
+      "sha256": "81edefbf0bd7c298955aca241fe7c97454ba3c86b34ade93e17d82b9999485c9"
     }
   ],
   "scenario": {
@@ -158,7 +158,7 @@
     "title": "SB vs BB after folds"
   },
   "schemaVersion": "1.0.0",
-  "solutionId": "solution:sha256:1e5323bfe3efdf244a424c2b1f17579c2c2f1d547cee7b77dd956bf0f4f4ead9",
+  "solutionId": "solution:sha256:1d88317f8e6038ea071ef81b77151674b791dcfe817e1b121449711e469e9f6d",
   "solver": {
     "algorithm": "CFR+ with linear averaging",
     "equitySamplesPerCanonicalMatchup": 8000,
@@ -188,5 +188,5 @@
       "1"
     ]
   },
-  "version": "phase2-hu-sb-bb-100bb-v1"
+  "version": "phase2-hu-sb-bb-100bb-v1.1"
 }

@@ -15,9 +15,10 @@ bookmarkable Study screen. “Trustworthy” has two distinct meanings here:
    never promotes numerical fidelity to a claim of real-game GTO accuracy.
 
 The bundled Phase 2 pack satisfies the first condition. Its source does not
-provide an absolute error bound for a 100 BB cash game, so the pack is visibly
-marked approximate and cannot be used by the Phase 3 Trainer for EV-loss
-grading.
+provide an absolute error bound for a 100 BB cash game, so the pack remains
+visibly marked approximate and may not be presented as accuracy-certified
+grading. Phase 3 may use it only in an explicitly acknowledged
+`REFERENCE_MODEL` mode whose EV loss is labelled relative to this exact pack.
 
 ## Bounded initial scenario
 
@@ -157,7 +158,7 @@ The artifact declares two independent accuracy layers:
 | Extraction fidelity to pinned source | max frequency error `6e-12`; max EV error `1e-12 BB` |
 | Source-model convergence | `0.000802724936 BB/hand` exploitability |
 | Absolute 100 BB game accuracy | no bound supplied |
-| Trainer EV-loss eligibility | `false` |
+| Accuracy-certified Trainer eligibility | `false` |
 
 Representative exact-combo snapshots are fixed in automated tests. A common
 node endpoint must remain below 200 ms p95 locally.

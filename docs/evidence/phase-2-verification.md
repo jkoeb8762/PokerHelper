@@ -1,7 +1,7 @@
 # Phase 2 Verification Evidence
 
 **Phase:** Solution Pipeline and Study Browser
-**Verified:** 2026-11-18
+**Verified:** 2026-11-18; artifact maintenance revalidated 2026-11-19
 **Result:** Exit gate satisfied for the agreed SB-versus-BB reference tree
 
 ## Shipped vertical slice
@@ -21,11 +21,11 @@ pinned authorized solver
 The bundled artifact is:
 
 ```text
-solution:sha256:1e5323bfe3efdf244a424c2b1f17579c2c2f1d547cee7b77dd956bf0f4f4ead9
+solution:sha256:1d88317f8e6038ea071ef81b77151674b791dcfe817e1b121449711e469e9f6d
 ```
 
 It contains 18 decision nodes, 169 grouped hands per node, and all 1,326 exact
-combos per node. Total artifact size is 8,748,208 bytes.
+combos per node. Total artifact size is 8,748,304 bytes.
 
 ## Checkpoint evidence
 
@@ -79,6 +79,16 @@ locked Python 3.14 / Node 24 application suite. All five jobs passed in
 at commit `a078d69`; the application job installed from the lockfile, ran the
 artifact and API checks, tested the UI, and built the production bundle.
 
+During Phase 3, replaying every published option through the canonical engine
+found that several stack-closing calls had correct amounts but stale
+`isAllIn: false` metadata. The generator now derives the flag from the resolved
+stack, the complete pack was deterministically regenerated as version
+`phase2-hu-sb-bb-100bb-v1.1`, and all 18 nodes pass shared Study/Trainer poker
+replay validation. Strategy frequencies and EVs did not change. The maintenance
+artifact is the content ID and byte count recorded above; the hosted Phase 2 run
+remains historical evidence for the earlier artifact, while current release
+verification is recorded with Phase 3.
+
 ## Live-browser acceptance
 
 The production build was served by FastAPI at `127.0.0.1:8000` and exercised in
@@ -104,6 +114,8 @@ The exit gate is satisfied for the explicitly agreed Phase 2 tree: any of its
 inspected at grouped and exact-combo levels, bookmarked, and reproduced from a
 validated immutable artifact.
 
-This is not the Phase 3 Trainer strategy pack. Completing the full six-max,
-raked, Trainer-eligible strategy remains a separate source/accuracy milestone
-and cannot be inferred from this exit result.
+This is not an accuracy-certified, full six-max Trainer pack. Phase 3 permits
+it only as an explicitly acknowledged `REFERENCE_MODEL` and labels EV loss
+relative to this exact source. Completing a full six-max, raked, certified
+strategy remains a separate source/accuracy milestone and cannot be inferred
+from this exit result.

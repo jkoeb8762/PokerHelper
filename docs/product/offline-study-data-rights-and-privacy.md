@@ -156,3 +156,10 @@ Every user-facing phase asks:
 The project owner approved the offline-study guardrail as a founding product
 principle and delegated completion through P1.10 on 2026-11-17. This document
 records the enforceable MVP requirements; it does not provide legal advice.
+
+**Phase 3 implementation note (2026-11-19):** local sessions and immutable
+decisions are stored in the configured repository-local SQLite database.
+Session deletion cascades to its decisions transactionally, retained redrills
+detach deleted provenance links safely, and active delayed-feedback results are
+redacted from detail and aggregate APIs until the session ends. No telemetry or
+external history transfer was added.

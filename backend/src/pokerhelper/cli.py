@@ -15,7 +15,7 @@ def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="pokerhelper")
     commands = parser.add_subparsers(dest="command", required=True)
 
-    serve = commands.add_parser("serve", help="Run the local Study application")
+    serve = commands.add_parser("serve", help="Run the local Study and Trainer application")
     serve.add_argument("--port", type=int, default=8000)
     serve.add_argument("--data-dir", type=Path, default=Path("data"))
     serve.add_argument("--reload", action="store_true")

@@ -1,6 +1,7 @@
 $ErrorActionPreference = "Stop"
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $python = Join-Path $projectRoot "backend\.venv\Scripts\python.exe"
+$env:npm_config_cache = Join-Path $projectRoot ".cache\npm"
 if (-not (Test-Path $python)) {
     throw "Backend environment is missing. Run .\scripts\setup.ps1 first."
 }

@@ -3,6 +3,8 @@ $projectRoot = Split-Path -Parent $PSScriptRoot
 $venvPath = Join-Path $projectRoot "backend\.venv"
 $python = Join-Path $venvPath "Scripts\python.exe"
 $env:UV_CACHE_DIR = Join-Path $projectRoot ".cache\uv"
+$env:PIP_CACHE_DIR = Join-Path $projectRoot ".cache\pip"
+$env:npm_config_cache = Join-Path $projectRoot ".cache\npm"
 
 $nodeVersion = (& node --version).TrimStart("v")
 $nodeParts = $nodeVersion.Split(".")

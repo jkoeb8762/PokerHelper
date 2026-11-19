@@ -195,6 +195,14 @@ These tests become active when solution data is introduced:
 Threshold comparisons use unrounded EV loss. These are training-priority bands,
 not moral judgments or claims about realized money.
 
+Frequency normalization tolerance and strategy support are separate. Policy v1
+uses `1e-9` only to validate that frequencies sum to one. An action is described
+as materially supported only when its frequency is at least 1% and its EV is
+within `0.010 BB` of the best offered action. A supported frequency at or below
+5% is labelled low-frequency supported. Smaller residual frequencies remain
+visible but are treated as finite-solve noise for interpretation; EV loss still
+determines the mistake label.
+
 Frequency calibration is displayed only after at least 50 comparable decisions
 for the same scenario, exact/grouped aggregation key, action set, and solution
 version. It always shows sample size and percentage-point deviation.

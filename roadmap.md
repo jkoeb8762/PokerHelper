@@ -1,9 +1,11 @@
 # PokerHelper Product Roadmap
 
 **Document status:** Active  
-**Last updated:** 2026-11-18
-**Current stage:** Stage 2 — Six-Max 100 BB Preflop MVP (review hold)
-**Current phase:** Phase 2 complete — product test and code review before Phase 3
+**Last updated:** 2026-11-19
+
+**Current stage:** Stage 2 — Six-Max 100 BB Preflop MVP complete (review hold)
+
+**Current phase:** Phase 3 complete — MVP product test and code review before Phase 4
 
 ## Purpose
 
@@ -54,7 +56,7 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 | 1. Foundation | 0. Product definition and architecture | Scope, contracts, UX, and technical direction are explicit | Complete | — |
 | 1. Foundation | 1. Poker rules and range engine | A tested, deterministic poker domain core | Complete | Phase 0 |
 | 2. Preflop MVP | 2. Solution pipeline and study browser | Users can inspect validated preflop solutions | Complete | Phase 1 |
-| 2. Preflop MVP | 3. Preflop trainer | Users can drill decisions and track EV-based results | Not started | Phase 2 |
+| 2. Preflop MVP | 3. Preflop trainer | Users can drill decisions and track EV-based results | Complete | Phase 2 |
 | 3. Postflop and Analysis | 4. Restricted postflop study | Users can explore a deliberately limited postflop library | Not started | Phase 3 |
 | 3. Postflop and Analysis | 5. Hand-history analyzer | Users can turn their own played hands into leak reports and drills | Not started | Phase 4 |
 | 4. Tournaments | 6. Tournament chip-EV | Short-stack, ante, push/fold, and reshove study | Not started | Phase 3; portions of Phase 4 |
@@ -181,16 +183,16 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 
 **Checkpoints**
 
-- [ ] P3.1 The trainer samples only possible hands at the correct solution weights.
-- [ ] P3.2 User actions pass through the same legal-action engine used by Study mode.
-- [ ] P3.3 Per-decision EV loss is calculated as `EV(best action) - EV(chosen action)` in documented units.
-- [ ] P3.4 Low-frequency but supported actions are distinguished from strategically costly mistakes.
-- [ ] P3.5 Feedback shows the reference mix, action EVs, assumptions, and a concise interpretation.
-- [ ] P3.6 Sessions store the exact solution version needed to reproduce every result.
-- [ ] P3.7 Users can review, filter, and replay previous decisions.
-- [ ] P3.8 Users can launch a targeted drill from prior mistakes.
-- [ ] P3.9 Statistics correctly aggregate volume, EV loss, and frequency calibration.
-- [ ] P3.10 End-to-end usability tests cover scenario selection through session review.
+- [x] P3.1 The trainer samples only possible hands at the correct solution weights. ([Evidence](docs/evidence/phase-3-verification.md))
+- [x] P3.2 User actions pass through the same legal-action engine used by Study mode. ([Evidence](docs/evidence/phase-3-verification.md))
+- [x] P3.3 Per-decision EV loss is calculated as `EV(best action) - EV(chosen action)` in documented units. ([Evidence](docs/evidence/phase-3-verification.md))
+- [x] P3.4 Low-frequency but supported actions are distinguished from strategically costly mistakes. ([Evidence](docs/evidence/phase-3-verification.md))
+- [x] P3.5 Feedback shows the reference mix, action EVs, assumptions, and a concise interpretation. ([Evidence](docs/evidence/phase-3-verification.md))
+- [x] P3.6 Sessions store the exact solution version needed to reproduce every result. ([Evidence](docs/evidence/phase-3-verification.md))
+- [x] P3.7 Users can review, filter, and replay previous decisions. ([Evidence](docs/evidence/phase-3-verification.md))
+- [x] P3.8 Users can launch a targeted drill from prior mistakes. ([Evidence](docs/evidence/phase-3-verification.md))
+- [x] P3.9 Statistics correctly aggregate volume, EV loss, and frequency calibration. ([Evidence](docs/evidence/phase-3-verification.md))
+- [x] P3.10 End-to-end usability tests cover scenario selection through session review. ([Evidence](docs/evidence/phase-3-verification.md))
 
 **Exit gate — MVP release:** A user can choose a supported six-max 100 BB preflop situation, make decisions, receive reproducible EV-based feedback, review the session, and drill identified weaknesses. Poker-domain and solution validation tests pass with no unresolved critical defects.
 
@@ -385,17 +387,17 @@ The first usable milestone is the **Six-Max 100 BB Preflop Trainer**. Tournament
 
 Every user-facing release must satisfy the following:
 
-- [ ] Domain calculations have unit and golden-test coverage.
-- [ ] Relevant solution values pass source or independent validation.
-- [ ] Strategy frequencies normalize within the documented tolerance.
-- [ ] Impossible card combinations and states are rejected.
-- [ ] Game, tree, data-source, solver, and accuracy assumptions are inspectable.
-- [ ] Historical results retain enough version data to be reproduced.
-- [ ] Unsupported or approximate results are labeled prominently.
-- [ ] Accessibility, responsive-layout, and primary-flow usability checks pass.
-- [ ] Privacy and data-retention behavior match the approved policy.
-- [ ] No feature reads or responds to a live poker-table state.
-- [ ] Known limitations and newly deferred work are documented.
+- [x] Domain calculations have unit and golden-test coverage. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [x] Relevant solution values pass source or independent validation. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [x] Strategy frequencies normalize within the documented tolerance. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [x] Impossible card combinations and states are rejected. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [x] Game, tree, data-source, solver, and accuracy assumptions are inspectable. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [x] Historical results retain enough version data to be reproduced. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [x] Unsupported or approximate results are labeled prominently. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [x] Accessibility, responsive-layout, and primary-flow usability checks pass. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [x] Privacy and data-retention behavior match the approved policy. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [x] No feature reads or responds to a live poker-table state. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
+- [x] Known limitations and newly deferred work are documented. ([Phase 3 release evidence](docs/evidence/phase-3-verification.md))
 
 ## Success metrics
 
@@ -457,6 +459,8 @@ These capabilities require their own future scope and checkpoints:
 | 2026-11-17 | Adopt the project-owned `MVP_CASH_5PCT_1BB_NFND_V1` rake preset: 5%, 1 BB cap, no-flop-no-drop, centi-BB rounding down. |
 | 2026-11-17 | Keep the Phase 1 poker domain standard-library-only and Python 3.12-compatible while retaining Python 3.14 as the primary release toolchain. |
 | 2026-11-17 | Keep the source repository public to use public-repository GitHub Actions; local study data, imported hands, solution artifacts, logs, credentials, and secrets remain excluded from source control. |
+| 2026-11-19 | Complete the local MVP with explicit `REFERENCE_MODEL` practice for the bundled approximate pack; preserve exact values, require acknowledgement, and reserve accuracy-certified language for a future qualifying solution. |
+| 2026-11-19 | Treat frequencies below 1% as non-material finite-solve residue for interpretation and require EV equivalence within 0.010 BB before describing an action as supported; retain the raw frequency for auditability. |
 
 ## Change log
 
@@ -471,3 +475,6 @@ These capabilities require their own future scope and checkpoints:
 | 2026-11-17 | Approved the technology design, low-fidelity MVP screens, accuracy contract, Phase 1 backlog, and guardrail requirements; completed Phase 0 and opened Phase 1. |
 | 2026-11-17 | Implemented and locally verified P1.1–P1.9 with 55 deterministic tests; configured the P1.10 CI matrix, pending its first connected hosted run. |
 | 2026-11-17 | Passed the P1.10 GitHub Actions matrix on Windows and Ubuntu with Python 3.12 and 3.14; completed Phase 1 and paused for product testing and code review. |
+| 2026-11-18 | Implemented and verified the immutable Phase 2 reference artifact, Study API, and responsive range browser; completed P2.1–P2.10. |
+| 2026-11-19 | Corrected stack-closing call `isAllIn` metadata through canonical replay and deterministically regenerated artifact version `phase2-hu-sb-bb-100bb-v1.1`. |
+| 2026-11-19 | Implemented and verified P3.1–P3.10 with exact-combo training, EV feedback, durable local history, replay, redrills, statistics, responsive browser acceptance, and release documentation; completed the local preflop MVP. |

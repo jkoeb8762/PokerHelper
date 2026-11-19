@@ -76,14 +76,22 @@ def _group_order() -> list[str]:
     return groups
 
 
-def _action(action_code: str, stack: float, *, facing: bool, actor: str, is_root: bool) -> dict[str, Any]:
+def _action(
+    action_code: str,
+    stack: float,
+    *,
+    facing: bool,
+    actor: str,
+    is_root: bool,
+    call_is_all_in: bool = False,
+) -> dict[str, Any]:
     if action_code == "F":
         return {"actionId": "fold", "type": "FOLD", "label": "Fold", "targetBb": None, "isAllIn": False, "sourceCode": action_code}
     if action_code == "X":
         return {"actionId": "check", "type": "CHECK", "label": "Check", "targetBb": None, "isAllIn": False, "sourceCode": action_code}
     if action_code == "C":
         label = "Limp to 1 BB" if is_root and actor == "SB" else "Call"
-        return {"actionId": "call", "type": "CALL", "label": label, "targetBb": None, "isAllIn": False, "sourceCode": action_code}
+        return {"actionId": "call", "type": "CALL", "label": label, "targetBb": None, "isAllIn": call_is_all_in, "sourceCode": action_code}
     if action_code == "A":
         target = _fmt(stack, 4)
         return {"actionId": "all-in", "type": "RAISE_TO", "label": f"All-in to {target} BB", "targetBb": target, "isAllIn": True, "sourceCode": action_code}
@@ -125,7 +133,14 @@ def _collect_states(tree: Any, stack: float) -> dict[int, dict[str, Any]]:
             child = tree.nodes[child_index]
             if child.kind != "decision":
                 continue
-            action = _action(source_code, stack, facing=facing, actor=actor, is_root=index == tree.root)
+            action = _action(
+                source_code,
+                stack,
+                facing=facing,
+                actor=actor,
+                is_root=index == tree.root,
+                call_is_all_in=source_code == "C" and current >= stack - 1e-9,
+            )
             nc0, nc1 = c0, c1
             if source_code == "C":
                 if node.player == 0:
@@ -195,7 +210,17 @@ def _build_node(
     contribution = state["c0"] if node.player == 0 else state["c1"]
     current = max(state["c0"], state["c1"])
     facing = current - contribution > 1e-9
-    actions = [_action(code, solver.cfg.stack, facing=facing, actor=actor, is_root=node_index == solver.tree.root) for code in node.actions]
+    actions = [
+        _action(
+            code,
+            solver.cfg.stack,
+            facing=facing,
+            actor=actor,
+            is_root=node_index == solver.tree.root,
+            call_is_all_in=code == "C" and current >= solver.cfg.stack - 1e-9,
+        )
+        for code in node.actions
+    ]
     action_ids = [action["actionId"] for action in actions]
     r0, r1 = solver._reach_to_node(node_index)
     own_reach = to_cpu(r0 if node.player == 0 else r1).astype(np.float64)
@@ -343,7 +368,7 @@ def main() -> int:
             "schemaVersion": SCHEMA_VERSION,
             "identityProfileVersion": "1",
             "solutionId": "",
-            "version": "phase2-hu-sb-bb-100bb-v1",
+            "version": "phase2-hu-sb-bb-100bb-v1.1",
             "title": "SB vs BB 100 BB reference strategy",
             "generatedAt": args.generated_at,
             "authorization": {
@@ -399,7 +424,7 @@ def main() -> int:
                 "Flop-going leaves use a positional realized-equity heuristic rather than a solved postflop game.",
                 "The source model is rake-free and does not implement the PokerHelper MVP cash-game rake preset.",
                 "Monte Carlo equity sampling and finite CFR+ iterations add approximation error; no absolute game-accuracy bound is available.",
-                "Study-only reference pack: it must not be used for Trainer EV-loss grading.",
+                "Not accuracy-certified for universal real-game GTO grading; Trainer use requires explicit REFERENCE_MODEL acknowledgement and labels EV loss relative to this exact source model.",
             ],
             "trainerEligible": False,
             "scenario": {

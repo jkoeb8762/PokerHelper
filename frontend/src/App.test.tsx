@@ -25,7 +25,7 @@ describe("Study browser", () => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ items: [scenarioSummary] }), { status: 200 })));
     wrapper("/");
     expect(await screen.findByRole("heading", { name: "SB vs BB after folds" })).toBeInTheDocument();
-    expect(screen.getByText("Study-only approximate model")).toBeInTheDocument();
+    expect(screen.getByText("Reference-model practice · acknowledgement required")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Open study browser/ })).toHaveAttribute("href", "/study/sb-vs-bb-100bb-after-folds/node-000");
   });
 

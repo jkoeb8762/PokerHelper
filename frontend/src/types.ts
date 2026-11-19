@@ -88,6 +88,8 @@ export interface ScenarioSummary {
   solver: Record<string, string | number>;
   accuracy: Record<string, string | null>;
   trainerEligible: boolean;
+  practiceAvailable: boolean;
+  accuracyMode: "CERTIFIED" | "REFERENCE_MODEL";
   limitationCount: number;
   nodeCount: number;
 }
@@ -111,4 +113,172 @@ export interface Assumptions {
   accuracy: Record<string, string | null>;
   limitations: string[];
   trainerEligible: boolean;
+  practiceAvailable: boolean;
+  accuracyMode: "CERTIFIED" | "REFERENCE_MODEL";
+}
+
+export type FeedbackMode = "IMMEDIATE" | "DELAYED";
+export type SessionStatus = "ACTIVE" | "COMPLETED" | "ABANDONED";
+export type FeedbackSeverity = "NO_MATERIAL_EV_LOSS" | "SMALL_EV_LOSS" | "SIGNIFICANT_MISTAKE" | "MAJOR_MISTAKE";
+
+export interface SummaryBreakdown {
+  key: string;
+  decisions: number;
+  totalEvLossBb: DecimalString;
+  averageEvLossBb: DecimalString;
+}
+
+export interface CalibrationAction {
+  optionId: string;
+  observedFrequency: DecimalString;
+  referenceFrequency: DecimalString;
+  deviationPp: DecimalString;
+}
+
+export interface CalibrationBucket {
+  scenarioId: string;
+  solutionId: string;
+  nodeId: string;
+  groupedHand: string;
+  sampleSize: number;
+  actions: CalibrationAction[];
+}
+
+export interface TrainingSummary {
+  decisionsCompleted: number;
+  totalEvLossBb: DecimalString;
+  averageEvLossBb: DecimalString;
+  evLossPer100DecisionsBb: DecimalString;
+  severityCounts: Record<FeedbackSeverity, number>;
+  byPosition: SummaryBreakdown[];
+  byActionSequence: SummaryBreakdown[];
+  byScenario: SummaryBreakdown[];
+  byGroupedHand: SummaryBreakdown[];
+  frequencyCalibration: { minimumSample: number; buckets: CalibrationBucket[] };
+}
+
+export interface TrainingSession {
+  sessionId: string;
+  schemaVersion: string;
+  status: SessionStatus;
+  scenarioId: string;
+  solutionId: string;
+  solutionVersion: string;
+  selectedNodeIds: string[];
+  heroPositions: Array<"SB" | "BB">;
+  targetDecisions: number;
+  feedbackMode: FeedbackMode;
+  scoringPolicyVersion: string;
+  samplingPolicyVersion: string;
+  accuracyMode: "CERTIFIED" | "REFERENCE_MODEL";
+  approximateAcknowledgedAt: string | null;
+  rngEnabled: boolean;
+  drillType: "STANDARD" | "REPEAT" | "MISTAKE_REVIEW" | "CLOSE_DECISIONS";
+  sourceSessionId: string | null;
+  startedAt: string;
+  completedAt: string | null;
+  summary: TrainingSummary;
+}
+
+export interface PromptOption extends ActionOption {
+  resolvedAction: Record<string, string | boolean>;
+}
+
+export interface RngMapping {
+  optionId: string;
+  label: string;
+  start: number;
+  end: number;
+}
+
+export interface TrainingPrompt {
+  promptId: string;
+  sessionId: string;
+  sequence: number;
+  targetDecisions: number;
+  scenarioId: string;
+  solutionId: string;
+  solutionVersion: string;
+  nodeId: string;
+  heroPosition: "SB" | "BB";
+  heroCombo: string;
+  groupedHand: string;
+  comboReachWeight: DecimalString;
+  actionHistory: HistoryAction[];
+  potBb: DecimalString;
+  amountToCallBb: DecimalString;
+  actorStackBehindBb: DecimalString;
+  offeredOptions: PromptOption[];
+  feedbackMode: FeedbackMode;
+  accuracyMode: "CERTIFIED" | "REFERENCE_MODEL";
+  rngAvailable: boolean;
+  rngRoll: number | null;
+  rngMapping: RngMapping[] | null;
+  presentedAt: string;
+}
+
+export interface ReferenceSnapshot {
+  optionId: string;
+  frequency: DecimalString;
+  actionEvBb: DecimalString;
+}
+
+export interface TrainingDecision {
+  decisionId: string;
+  promptId?: string;
+  sessionId: string;
+  sequence: number;
+  scenarioId?: string;
+  gameConfigId?: string;
+  solutionId?: string;
+  solutionVersion?: string;
+  nodeId?: string;
+  heroPosition?: "SB" | "BB";
+  actionHistoryKey?: string;
+  heroCombo: string;
+  groupedHand: string;
+  offeredOptions?: PromptOption[];
+  selectedOptionId: string;
+  selectedResolvedAction?: Record<string, string | boolean>;
+  comboReachWeight?: DecimalString;
+  referenceSnapshot?: ReferenceSnapshot[];
+  highestEvOptionId?: string;
+  evLossBb?: DecimalString;
+  feedbackSeverity?: FeedbackSeverity;
+  strategyStatus?: string;
+  scoringPolicyVersion?: string;
+  accuracyMode?: "CERTIFIED" | "REFERENCE_MODEL";
+  rngRoll?: number | null;
+  rngMapping?: RngMapping[] | null;
+  presentedAt?: string;
+  answeredAt: string;
+  interpretation?: string;
+  feedbackPending?: boolean;
+}
+
+export interface TrainingSessionDetail extends TrainingSession {
+  decisions: TrainingDecision[];
+}
+
+export interface SubmissionResponse {
+  session: TrainingSession;
+  recorded: boolean;
+  feedbackVisible: boolean;
+  decision: TrainingDecision;
+}
+
+export interface CreateSessionInput {
+  scenarioId: string;
+  nodeIds?: string[];
+  heroPositions: Array<"SB" | "BB">;
+  targetDecisions: number;
+  feedbackMode: FeedbackMode;
+  rngEnabled: boolean;
+  acknowledgeApproximate: boolean;
+}
+
+export interface DecisionReplayResponse {
+  session: TrainingSession;
+  decision: TrainingDecision;
+  assumptions: Assumptions;
 }

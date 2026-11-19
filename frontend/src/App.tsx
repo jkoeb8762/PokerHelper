@@ -1,31 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link, NavLink, Route, Routes, useParams, useSearchParams } from "react-router-dom";
+import { Link, Route, Routes, useParams, useSearchParams } from "react-router-dom";
 import { getAssumptions, getNode, getScenario, getScenarios } from "./api";
+import { Shell } from "./Shell";
+import { DecisionReplay, SessionHistory, SessionReview, TrainerSetup, TrainingRoom } from "./Trainer";
 import type { ActionOption, Assumptions, GroupStrategy, ScenarioDetail, SolutionNode } from "./types";
 
 const RANKS = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"];
 const ACTION_COLORS = ["#d36b5e", "#61a7a2", "#e5af54", "#8f7ec1"];
-
-function Shell({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="app-shell">
-      <header className="topbar">
-        <Link className="brand" to="/" aria-label="PokerHelper home">
-          <span className="brand-mark" aria-hidden="true">PH</span>
-          <span><strong>PokerHelper</strong><small>Local study lab</small></span>
-        </Link>
-        <nav aria-label="Primary navigation">
-          <NavLink to="/" end>Study</NavLink>
-          <span className="nav-disabled" title="Planned for Phase 3">Train <em>soon</em></span>
-        </nav>
-        <div className="local-status"><span aria-hidden="true" /> Local · v0.2</div>
-      </header>
-      <main id="main-content">{children}</main>
-      <footer>Built for deliberate, post-session study. No live-table integration.</footer>
-    </div>
-  );
-}
 
 function ScenarioSelection() {
   const scenarios = useQuery({ queryKey: ["scenarios"], queryFn: getScenarios });
@@ -55,8 +37,11 @@ function ScenarioSelection() {
                 <div><dt>Blinds</dt><dd>{scenario.game.smallBlindBb}/{scenario.game.bigBlindBb}</dd></div>
                 <div><dt>Rake</dt><dd>{Number(scenario.game.rake.rate) === 0 ? "No rake" : `${Number(scenario.game.rake.rate) * 100}%`}</dd></div>
               </dl>
-              {!scenario.trainerEligible && <p className="study-badge">Study-only approximate model</p>}
-              <Link className="primary-button" to={`/study/${scenario.scenarioId}/${scenario.rootNodeId}`}>Open study browser <span aria-hidden="true">→</span></Link>
+              {!scenario.trainerEligible && <p className="study-badge">Reference-model practice · acknowledgement required</p>}
+              <div className="scenario-actions">
+                <Link className="primary-button" to={`/study/${scenario.scenarioId}/${scenario.rootNodeId}`}>Open study browser</Link>
+                <Link className="outline-button" to={`/train?scenario=${encodeURIComponent(scenario.scenarioId)}`}>Start practice</Link>
+              </div>
               <small className="version-note">{scenario.solutionVersion}</small>
             </article>
           ))}
@@ -101,7 +86,7 @@ function StudyView() {
       {!scenario.data.trainerEligible && (
         <div className="model-warning" role="note">
           <strong>Approximate study model</strong>
-          <span>This pack reproduces its source exactly, but it does not solve postflop play or rake and is not approved for EV-loss grading.</span>
+          <span>This pack reproduces its source exactly but does not solve postflop play or rake. Trainer feedback is explicitly labeled relative to this model.</span>
         </div>
       )}
       <div className="study-layout">
@@ -257,6 +242,7 @@ function BranchActions({ scenarioId, node, exactCombo }: { scenarioId: string; n
     <div className="branch-section">
       <p className="eyebrow">Continue this branch</p>
       <div className="branch-actions">
+        <Link className="train-node-link" to={`/train?scenario=${encodeURIComponent(scenarioId)}&node=${encodeURIComponent(node.nodeId)}`}>Train this decision<span>Exact solution node</span></Link>
         {node.actions.map((action) => {
           const child = node.childNodeByAction[action.actionId];
           return child ? (
@@ -347,5 +333,14 @@ function prettyCombo(combo: string) {
 }
 
 export default function App() {
-  return <Routes><Route path="/" element={<ScenarioSelection />} /><Route path="/study/:scenarioId/:nodeId" element={<StudyView />} /><Route path="*" element={<ScenarioSelection />} /></Routes>;
+  return <Routes>
+    <Route path="/" element={<ScenarioSelection />} />
+    <Route path="/study/:scenarioId/:nodeId" element={<StudyView />} />
+    <Route path="/train" element={<TrainerSetup />} />
+    <Route path="/train/session/:sessionId" element={<TrainingRoom />} />
+    <Route path="/sessions" element={<SessionHistory />} />
+    <Route path="/sessions/:sessionId" element={<SessionReview />} />
+    <Route path="/sessions/:sessionId/decisions/:decisionId" element={<DecisionReplay />} />
+    <Route path="*" element={<ScenarioSelection />} />
+  </Routes>;
 }

@@ -11,15 +11,17 @@ observe live tables, or provide real-time assistance.
 
 ## Current milestone
 
-Phase 2 is complete and ready for product testing. PokerHelper now validates and
-atomically publishes immutable solution packs, serves a local versioned API,
-and provides a responsive Study browser with an action tree, 13×13 range
-matrix, exact suited combos, action frequencies, EVs, and visible provenance.
+Phase 3 is complete and ready for product testing. PokerHelper now adds a
+range-weighted preflop Trainer to the validated Study browser: exact suited
+combos, legal action inputs, immediate or delayed feedback, exact-decimal EV
+loss, optional mixed-strategy RNG bands, durable local sessions, replay,
+breakdowns, calibration, and targeted redrills.
 
 The bundled pack is deliberately narrow: SB versus BB after four folds at 100
 BB. It exactly reproduces a pinned open-source solver output, but its postflop
-continuation model is approximate and rake-free. The interface labels this
-clearly, and the pack is technically blocked from Trainer EV-loss grading.
+continuation model is approximate and rake-free. Trainer use therefore requires
+an explicit acknowledgement, and every result is labelled as EV relative to
+that exact reference model—not as accuracy-certified real-game GTO advice.
 
 ## Run the app locally
 
@@ -31,7 +33,11 @@ Requirements: Python 3.12+ and Node.js 24 LTS.
 ```
 
 The launcher binds only to `127.0.0.1`, opens
-`http://127.0.0.1:8000`, and keeps application data under `data/`.
+`http://127.0.0.1:8000`, and keeps application data under `data/`. The setup,
+development, and test scripts keep PokerHelper's virtual environment,
+`node_modules`, caches, build output, and local data inside the repository. If
+the repository is on `E:`, all project-managed files remain on `E:`; existing
+Python and Node executables may be invoked from their installed locations.
 
 For frontend development with live reload:
 
@@ -47,7 +53,7 @@ From PowerShell at the repository root:
 .\scripts\test.ps1
 ```
 
-The script runs 69 backend tests, frontend component tests, and the production
+The script runs 87 backend tests, 4 frontend component tests, and the production
 frontend build. The original zero-dependency domain suite can still run on any
 supported shell:
 
@@ -67,6 +73,8 @@ frontend dependencies in `frontend/package-lock.json`.
 - [Technology and deployment design](docs/superpowers/specs/2026-11-17-technology-stack-and-deployment-design.md)
 - [Phase 2 artifact and Study design](docs/superpowers/specs/2026-11-18-solution-artifact-and-study-browser-design.md)
 - [Phase 2 source and scope](docs/product/phase-2-source-and-scope.md)
+- [Phase 3 Trainer design](docs/superpowers/specs/2026-11-19-preflop-trainer-design.md)
+- [Phase 3 verification evidence](docs/evidence/phase-3-verification.md)
 - [Golden-test and accuracy contract](docs/product/golden-test-corpus-and-accuracy.md)
 - [MVP wireframes](docs/product/mvp-low-fidelity-wireframes.md)
 - [Offline-study and privacy requirements](docs/product/offline-study-data-rights-and-privacy.md)

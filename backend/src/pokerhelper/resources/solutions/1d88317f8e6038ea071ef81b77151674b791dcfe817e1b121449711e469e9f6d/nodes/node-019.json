@@ -40,7 +40,7 @@
     },
     {
       "actionId": "call",
-      "isAllIn": false,
+      "isAllIn": true,
       "label": "Call",
       "sourceCode": "C",
       "targetBb": null,

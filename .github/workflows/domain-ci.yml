@@ -33,8 +33,8 @@ jobs:
           PYTHONHASHSEED: "0"
         run: python -m unittest discover -s backend/tests -p "test_[a-r]*.py" -v
 
-  phase-2-application-suite:
-    name: Phase 2 API + UI / Python 3.14 / Node 24
+  phase-3-application-suite:
+    name: Phase 3 API + UI / Python 3.14 / Node 24
     runs-on: ubuntu-latest
 
     steps:
@@ -72,8 +72,8 @@ jobs:
         working-directory: frontend
         run: npm run build
 
-      - name: Validate artifact, API, performance, and production routes
+      - name: Validate artifact, Study, Trainer, persistence, and performance
         env:
           PYTHONHASHSEED: "0"
-        run: backend/.venv/bin/python -m unittest -v backend.tests.test_solution_artifact backend.tests.test_study_api
+        run: backend/.venv/bin/python -m unittest -v backend.tests.test_solution_artifact backend.tests.test_study_api backend.tests.test_training_api
 

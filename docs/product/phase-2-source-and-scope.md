@@ -1,7 +1,7 @@
 # Phase 2 Reference Pack: Source, Scope, and Limitations
 
 **Status:** Approved implementation boundary
-**Date:** 2026-11-18
+**Date:** 2026-11-18; reference-practice boundary amended 2026-11-19
 **Roadmap checkpoint:** P2.1
 
 ## Source decision
@@ -66,16 +66,20 @@ than silently showing the separately approved MVP rake preset.
 
 This pack is:
 
-- available only for offline Study mode;
-- visibly labeled “approximate study model”;
+- available only for offline Study and explicitly acknowledged reference-model
+  practice;
+- visibly labeled “approximate reference model” wherever strategy or feedback
+  appears;
 - limited to SB versus BB after four prior folds;
 - not described as a complete six-max GTO solution;
 - marked `trainerEligible: false` in immutable metadata;
-- blocked from EV-loss scoring in Phase 3.
+- never presented as accuracy-certified grading;
+- eligible for reproducible Phase 3 EV-loss scoring only after the user
+  acknowledges that results are relative to this exact source model.
 
 A later Trainer pack needs a new source decision and must model the intended
 game, including rake and postflop continuation values, within the accuracy gate
-in the golden-test contract.
+in the golden-test contract before it may be described as certified.
 
 ## Generation command
 
